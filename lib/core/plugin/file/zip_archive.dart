@@ -4,7 +4,7 @@ import 'package:elearning/core/utils/log_utils.dart';
 import 'package:flutter/services.dart';
 
 class ZipArchie {
-  static const MethodChannel _channel = MethodChannel('E_LEARNING_CHANNEL');
+  static const MethodChannel _channel = MethodChannel('TEST_PROJECT_CHANNEL');
 
   static ZipArchie? _instance;
 

@@ -4,16 +4,11 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:elearning/core/constants/api_end_point.dart';
-import 'package:elearning/core/constants/constants.dart';
 import 'package:elearning/core/data/models/user_model.dart';
 import 'package:elearning/core/data/remote/api/api_exception.dart';
 import 'package:elearning/core/data/remote/api/failure.dart';
-import 'package:elearning/core/data/share_preference/spref_locale_model.dart';
 import 'package:elearning/core/data/share_preference/spref_user_model.dart';
 import 'package:elearning/core/utils/log_utils.dart';
-import 'package:elearning/ui/views/auth/sign_in_view.dart';
-import 'package:elearning/ui/views/mains/main_view_after_sign_in.dart';
-import 'package:flutter/material.dart';
 
 import 'app_dio.dart';
 
@@ -24,17 +19,8 @@ class HandleInterceptors extends QueuedInterceptorsWrapper {
 
   //TODO header
   Map<String, String> get headers {
-    String acceptLanguage = "en-US";
-    if (SPrefLocaleModel().getLocale() == Constants.ja) {
-      acceptLanguage = "ja-JP";
-    }
-    if (SPrefLocaleModel().getLocale() == Constants.vi) {
-      acceptLanguage = "vi-VN";
-    }
-
     return <String, String>{
       'Accept': '*/*',
-      'Accept-Language': acceptLanguage,
     };
   }
 
@@ -169,23 +155,24 @@ class HandleInterceptors extends QueuedInterceptorsWrapper {
           ),
         );
 
-        Constants.navigatorKey.currentState?.pushReplacement(
-          MaterialPageRoute(
-            builder: (context) => SignInView(
-              canBack: false,
-              showExpirationToken: true,
-              callBack: () {
-                Constants.navigatorKey.currentState?.push(
-                  MaterialPageRoute<void>(
-                    builder: (context) {
-                      return const MainViewAfterSignIn();
-                    },
-                  ),
-                );
-              },
-            ),
-          ),
-        );
+        // TODO refreshtoken
+        // Constants.navigatorKey.currentState?.pushReplacement(
+        //   MaterialPageRoute(
+        //     builder: (context) => SignInView(
+        //       canBack: false,
+        //       showExpirationToken: true,
+        //       callBack: () {
+        //         Constants.navigatorKey.currentState?.push(
+        //           MaterialPageRoute<void>(
+        //             builder: (context) {
+        //               return const MainViewAfterSignIn();
+        //             },
+        //           ),
+        //         );
+        //       },
+        //     ),
+        //   ),
+        // );
 
         return;
       } else if (errorRefreshToken is UnauthorisedException) {

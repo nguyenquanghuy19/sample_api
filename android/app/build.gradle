@@ -36,7 +36,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "rikkei.com.e.lms.elearning"
+        applicationId "com.example.test_project"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-build-configuration.
         minSdkVersion flutter.minSdkVersion
@@ -53,7 +53,6 @@ android {
             shrinkResources false
             minifyEnabled false
             // Define key message for encrypt/decrypt in android
-            buildConfigField "String", "SMA_CHARI_ENCRYPT_KEY", '"69c8a68Lzw8HkVjAtnJiYzcY37xTrOpR8xmalXtrAuE="'
             multiDexEnabled true
         }
         debug {
@@ -62,7 +61,6 @@ android {
             shrinkResources false
             minifyEnabled false
             // Define key message for encrypt/decrypt in android
-            buildConfigField "String", "SMA_CHARI_ENCRYPT_KEY", '"69c8a68Lzw8HkVjAtnJiYzcY37xTrOpR8xmalXtrAuE="'
             multiDexEnabled true
         }
     }

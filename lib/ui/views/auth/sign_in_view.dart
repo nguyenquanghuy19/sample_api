@@ -1,30 +1,19 @@
 import 'package:elearning/core/l10n/strings.dart';
 import 'package:elearning/core/utils/check_validate_utils.dart';
-import 'package:elearning/core/utils/log_utils.dart';
 import 'package:elearning/ui/shared/app_button.dart';
 import 'package:elearning/ui/shared/app_input.dart';
 import 'package:elearning/ui/shared/app_theme.dart';
 import 'package:elearning/ui/shared/images.dart';
-import 'package:elearning/ui/views/auth/forgot_password_view.dart';
-import 'package:elearning/ui/views/auth/sign_up_view.dart';
 import 'package:elearning/ui/views/base_view.dart';
 import 'package:elearning/view_models/auth/sign_in_view_model.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
 class SignInView extends BaseView {
-  final Function()? callBack;
-  final bool canBack;
-  final bool showExpirationToken;
-
   const SignInView({
     super.key,
-    this.callBack,
-    required this.canBack,
-    this.showExpirationToken = false,
   });
 
   @override
@@ -53,22 +42,6 @@ class SignInViewState extends BaseViewState<SignInView, SignInViewModel> {
           child: _buildSignIn(),
         ),
       ),
-      bottomSheet: widget.showExpirationToken &&
-              MediaQuery.of(context).viewInsets.bottom == 0
-          ? Container(
-              height: 55,
-              margin: const EdgeInsets.only(bottom: 5),
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              width: MediaQuery.of(context).size.width,
-              color: Colors.black,
-              alignment: Alignment.center,
-              child: Text(
-                Strings.of(context)!.expirationToken,
-                style: AppText.text16.copyWith(color: Colors.white),
-                textAlign: TextAlign.center,
-              ),
-            )
-          : null,
     );
   }
 
@@ -87,21 +60,6 @@ class SignInViewState extends BaseViewState<SignInView, SignInViewModel> {
               ),
             ),
           ),
-          if (widget.canBack)
-            Positioned(
-              child: IconButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                  ScaffoldMessenger.of(context).hideCurrentSnackBar();
-                },
-                icon: Tab(
-                  icon: SvgPicture.asset(
-                    Images.iconArrowLeft,
-                    color: Colors.black,
-                  ),
-                ),
-              ),
-            ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 250.h),
             child: Column(children: [
@@ -173,8 +131,6 @@ class SignInViewState extends BaseViewState<SignInView, SignInViewModel> {
                         Row(
                           children: [
                             Flexible(child: _checkRememberMe()),
-                            const SizedBox(width: 8),
-                            Expanded(child: _forgottenPassword()),
                           ],
                         ),
                         SizedBox(height: 29.h),
@@ -188,7 +144,6 @@ class SignInViewState extends BaseViewState<SignInView, SignInViewModel> {
                 ],
               ),
               SizedBox(height: 28.h),
-              _signUpNav(),
             ]),
           ),
         ]),
@@ -256,23 +211,6 @@ class SignInViewState extends BaseViewState<SignInView, SignInViewModel> {
     );
   }
 
-  Widget _forgottenPassword() {
-    return TextButton(
-      onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute<void>(builder: (context) {
-            return const ForgotPasswordView();
-          }),
-        );
-      },
-      child: Text(
-        Strings.of(context)!.forgottenPassword,
-        style: AppText.text14.copyWith(color: AppColor.blueAccent),
-      ),
-    );
-  }
-
   Widget _buildSignInBtn() {
     return Selector<SignInViewModel, bool>(
       selector: (_, viewModel) => viewModel.inProgress,
@@ -282,47 +220,10 @@ class SignInViewState extends BaseViewState<SignInView, SignInViewModel> {
           label: Strings.of(context)!.btnSignIn,
           isDisableButton: inProgress,
           onPressed: () async {
-            if (_formKey.currentState!.validate()) {
-              if (!inProgress) {
-                final res = await viewModel.onSignIn();
-                if (res && widget.callBack != null) {
-                  widget.callBack!();
-                }
-              }
-            }
+            if (_formKey.currentState!.validate()) {}
           },
         );
       },
-    );
-  }
-
-  Widget _signUpNav() {
-    return Container(
-      alignment: Alignment.center,
-      child: RichText(
-        text: TextSpan(
-          children: [
-            TextSpan(
-              text: Strings.of(context)!.signUpNavigation,
-              style: AppText.text14.copyWith(color: AppColor.neutrals.shade800),
-            ),
-            TextSpan(
-              text: Strings.of(context)!.labelSignUp,
-              recognizer: TapGestureRecognizer()
-                ..onTap = () {
-                  LogUtils.d("[$runtimeType][OPEN_SIGN_UP_SCREEN] => RUNNING");
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute<void>(builder: (context) {
-                      return const SignUpView();
-                    }),
-                  );
-                },
-              style: AppText.text14.copyWith(color: AppColor.blueAccent),
-            ),
-          ],
-        ),
-      ),
     );
   }
 }

@@ -60,22 +60,16 @@ class SignInViewModel extends BaseViewModel {
       }
 
       return false;
-    } on ApiException catch (e) {
+    } on ApiException {
       _inProgress = false;
       updateUI();
       hideCurrentSnackBar();
-      showToastError(
-        e.failure?.message ?? Strings.of(context)!.anErrorHasOccurred,
-      );
 
       return false;
     } on Exception {
       _inProgress = false;
       updateUI();
       hideCurrentSnackBar();
-      showToastError(
-        Strings.of(context)!.anErrorHasOccurred,
-      );
 
       return false;
     }

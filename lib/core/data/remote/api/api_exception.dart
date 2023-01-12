@@ -71,25 +71,6 @@ class ApiException extends DioError {
 
   StatusCode? get statusCode => _statusCode;
 
-  int? get errorCodeScreen {
-    switch (_statusCode!.value) {
-      case 200:
-        return Constants.noErrorCode;
-      case 400:
-        return Constants.errorCode400;
-      case 404:
-        return Constants.errorCode404;
-      case 500:
-        return Constants.errorCode500;
-      case 503:
-        return Constants.errorCode503;
-      case 504:
-        return Constants.errorCode504;
-      default:
-        return -2;
-    }
-  }
-
   @override
   String toString() {
     String errorMessage = Constants.stringEmpty;
