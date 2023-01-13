@@ -1,5 +1,5 @@
-import 'package:elearning/core/utils/log_utils.dart';
-import 'package:elearning/ui/widgets/banners/flavor_config.dart';
+import 'package:testproject/core/utils/log_utils.dart';
+import 'package:testproject/ui/widgets/banners/flavor_config.dart';
 import 'package:http_mock_adapter/http_mock_adapter.dart';
 
 import 'app_dio.dart';

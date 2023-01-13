@@ -2,8 +2,8 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
-import 'package:elearning/core/enums/enums.dart';
-import 'package:elearning/core/utils/device_utils.dart';
+import 'package:testproject/core/enums/enums.dart';
+import 'package:testproject/core/utils/device_utils.dart';
 import 'package:intl/intl.dart';
 import 'package:path_provider/path_provider.dart';
 

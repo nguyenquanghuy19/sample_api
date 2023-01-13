@@ -1,6 +1,6 @@
-import 'package:elearning/core/enums/enums.dart';
-import 'package:elearning/core/utils/log_utils.dart';
-import 'package:elearning/view_models/base_view_model.dart';
+import 'package:testproject/core/enums/enums.dart';
+import 'package:testproject/core/utils/log_utils.dart';
+import 'package:testproject/view_models/base_view_model.dart';
 import 'package:flutter/material.dart';
 
 class MainViewAfterSignInViewModel extends BaseViewModel {

@@ -2,9 +2,9 @@ import 'dart:convert';
 
 import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
-import 'package:elearning/core/constants/constants.dart';
-import 'package:elearning/core/utils/log_utils.dart';
-import 'package:elearning/ui/widgets/banners/flavor_config.dart';
+import 'package:testproject/core/constants/constants.dart';
+import 'package:testproject/core/utils/log_utils.dart';
+import 'package:testproject/ui/widgets/banners/flavor_config.dart';
 import 'package:flutter/foundation.dart';
 import 'package:http_mock_adapter/http_mock_adapter.dart';
 

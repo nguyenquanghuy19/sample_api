@@ -1,4 +1,4 @@
-name: elearning
+name: testproject
 description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
@@ -50,29 +50,10 @@ dependencies:
   flutter_email_sender: ^5.1.0
   http: ^0.13.5
   shared_preferences: ^2.0.15
-  intl_phone_field: ^3.1.0
-  image_picker: ^0.8.6
-  equatable: ^2.0.5
-  readmore: ^2.2.0
-  pull_to_refresh: ^2.0.0
-  flutter_markdown: ^0.6.12
-  golden_toolkit: ^0.13.0
   flutter_screenutil: ^5.6.0
   font_awesome_flutter: ^10.2.1
-  flutter_phoenix: ^1.1.0
   flutter_svg: ^1.1.6
-  flutter_html: ^3.0.0-alpha.6
-  percent_indicator: ^4.2.2
-  carousel_slider: ^4.1.1
-  shimmer: ^2.0.0
-  audioplayers: ^1.1.1
-  video_player: ^2.4.10
-  lottie: ^2.1.0
-  reorderables: ^0.5.1
-  comment_tree: ^0.3.0
-  fl_chart: ^0.55.2
-  overlay_support: ^2.1.0
-  path_drawing: ^1.0.1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -98,10 +79,6 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/
-    - assets/images/png/
-    - assets/icons/
-    - assets/icons/png/
-    - assets/jsons/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

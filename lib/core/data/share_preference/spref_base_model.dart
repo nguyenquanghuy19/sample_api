@@ -1,4 +1,4 @@
-import 'package:elearning/core/utils/log_utils.dart';
+import 'package:testproject/core/utils/log_utils.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class SPrefBaseModel {

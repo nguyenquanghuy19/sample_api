@@ -1,7 +1,7 @@
-import 'package:elearning/core/constants/constants.dart';
-import 'package:elearning/core/utils/log_utils.dart';
-import 'package:elearning/ui/shared/app_theme.dart';
-import 'package:elearning/view_models/application_view_model.dart';
+import 'package:testproject/core/constants/constants.dart';
+import 'package:testproject/core/utils/log_utils.dart';
+import 'package:testproject/ui/shared/app_theme.dart';
+import 'package:testproject/view_models/application_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

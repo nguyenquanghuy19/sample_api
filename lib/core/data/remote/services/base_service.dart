@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:dio/dio.dart';
-import 'package:elearning/core/data/remote/configs/app_dio.dart';
-import 'package:elearning/core/data/remote/configs/mock_api.dart';
-import 'package:elearning/core/utils/log_utils.dart';
+import 'package:testproject/core/data/remote/configs/app_dio.dart';
+import 'package:testproject/core/data/remote/configs/mock_api.dart';
+import 'package:testproject/core/utils/log_utils.dart';
 
 /// API Request送信
 abstract class BaseService {

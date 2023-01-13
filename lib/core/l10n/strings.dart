@@ -1,4 +1,4 @@
-import 'package:elearning/core/l10n/strings_impl.dart';
+import 'package:testproject/core/l10n/strings_impl.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 

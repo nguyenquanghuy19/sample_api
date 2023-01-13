@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:device_info_plus/device_info_plus.dart';
-import 'package:elearning/core/enums/enums.dart';
+import 'package:testproject/core/enums/enums.dart';
 import 'package:flutter/material.dart';
 
 import 'flavor_config.dart';

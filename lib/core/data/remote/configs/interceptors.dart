@@ -3,12 +3,12 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:elearning/core/constants/api_end_point.dart';
-import 'package:elearning/core/data/models/user_model.dart';
-import 'package:elearning/core/data/remote/api/api_exception.dart';
-import 'package:elearning/core/data/remote/api/failure.dart';
-import 'package:elearning/core/data/share_preference/spref_user_model.dart';
-import 'package:elearning/core/utils/log_utils.dart';
+import 'package:testproject/core/constants/api_end_point.dart';
+import 'package:testproject/core/data/models/user_model.dart';
+import 'package:testproject/core/data/remote/api/api_exception.dart';
+import 'package:testproject/core/data/remote/api/failure.dart';
+import 'package:testproject/core/data/share_preference/spref_user_model.dart';
+import 'package:testproject/core/utils/log_utils.dart';
 
 import 'app_dio.dart';
 

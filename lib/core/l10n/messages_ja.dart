@@ -991,7 +991,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "warning": MessageLookupByLibrary.simpleMessage(
           "警告",
         ),
-        "titleLearningTime": MessageLookupByLibrary.simpleMessage(
+        "titltestprojectTime": MessageLookupByLibrary.simpleMessage(
           "Day streak",
         ),
         "hello": MessageLookupByLibrary.simpleMessage(

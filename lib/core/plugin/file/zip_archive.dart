@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:elearning/core/utils/log_utils.dart';
+import 'package:testproject/core/utils/log_utils.dart';
 import 'package:flutter/services.dart';
 
 class ZipArchie {

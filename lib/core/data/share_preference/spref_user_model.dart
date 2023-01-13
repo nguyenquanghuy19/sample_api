@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
-import 'package:elearning/core/data/share_preference/spref_base_model.dart';
+import 'package:testproject/core/data/share_preference/spref_base_model.dart';
 
 class SPrefUserModel extends SPrefBaseModel {
   static SPrefUserModel? _instance;

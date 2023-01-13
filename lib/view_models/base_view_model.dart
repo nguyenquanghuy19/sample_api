@@ -1,5 +1,5 @@
-import 'package:elearning/core/utils/log_utils.dart';
-import 'package:elearning/core/utils/network_utils.dart';
+import 'package:testproject/core/utils/log_utils.dart';
+import 'package:testproject/core/utils/network_utils.dart';
 import 'package:flutter/material.dart';
 
 /// BaseViewModel

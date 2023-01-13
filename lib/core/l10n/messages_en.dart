@@ -1057,7 +1057,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "warning": MessageLookupByLibrary.simpleMessage(
           "Warning",
         ),
-        "titleLearningTime": MessageLookupByLibrary.simpleMessage(
+        "titltestprojectTime": MessageLookupByLibrary.simpleMessage(
           "Day streak",
         ),
       };

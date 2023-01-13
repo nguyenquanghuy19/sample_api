@@ -90,12 +90,8 @@ class AppText extends TextStyle {
 
 class AppColor extends MaterialColor {
   const AppColor(int primary, Map<int, Color> swatch) : super(primary, swatch);
-  static const Color backgroundErrorWidget = Color(0xFF1E1E1E);
-  static const Color textTitleErrorWidget = Color(0xFF161719);
-  static const Color textMessageErrorWidget = Color(0xFF9B9B9B);
-
-  static const Color colorShadowItemRoadMap = Color(0x1A000000);
-  static const Color backgroundRoadMap = Color(0xFFFAFAFA);
+  static const Color backgroundGradientStart = Color(0xFF1D2238);
+  static const Color colorsPrimary = Color(0xFF647FFF);
 
   static const MaterialColor primary = MaterialColor(
     _deepOrangePrimaryValue,

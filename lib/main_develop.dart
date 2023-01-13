@@ -1,6 +1,5 @@
-import 'package:elearning/ui/widgets/banners/flavor_config.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_phoenix/flutter_phoenix.dart';
+import 'package:testproject/ui/widgets/banners/flavor_config.dart';
 
 import 'application.dart';
 import 'core/enums/enums.dart';
@@ -11,7 +10,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // Setup Flavor
   _setUpFlavorDevelop();
-  runApp(Phoenix(child: const Application()));
+  runApp(const Application());
 }
 
 void _setUpFlavorDevelop() {

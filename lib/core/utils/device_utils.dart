@@ -1,4 +1,4 @@
-import 'package:elearning/core/enums/enums.dart';
+import 'package:testproject/core/enums/enums.dart';
 
 class DeviceUtils {
   static BuildMode currentBuildMode() {

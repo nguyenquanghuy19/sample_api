@@ -1,5 +1,5 @@
-import 'package:elearning/core/enums/enums.dart';
-import 'package:elearning/ui/shared/app_theme.dart';
+import 'package:testproject/core/enums/enums.dart';
+import 'package:testproject/ui/shared/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class MessageUtils {

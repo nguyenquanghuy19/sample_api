@@ -1,4 +1,4 @@
-import 'package:elearning/core/l10n/strings.dart';
+import 'package:testproject/core/l10n/strings.dart';
 import 'package:flutter/cupertino.dart';
 
 class CheckValidateUtils {
@@ -9,9 +9,9 @@ class CheckValidateUtils {
         r"{0,253}[a-zA-Z0-9])?)*$";
     RegExp regex = RegExp(pattern);
     if (value == null || value.isEmpty) {
-      return Strings.of(context)!.emailRequired;
+      return "Strings.of(context)!.emailRequired";
     } else if (!regex.hasMatch(value)) {
-      return Strings.of(context)!.emailInvalid;
+      return "Strings.of(context)!.emailInvalid";
     }
 
     return null;
@@ -36,26 +36,26 @@ class CheckValidateUtils {
     RegExp rxValidCharacters = RegExp(patternValidCharacters);
 
     if (value == null || value.isEmpty) {
-      return Strings.of(context)!.passwordRequired;
+      return "Strings.of(context)!.passwordRequired";
     }
-    if (value.length < 8) {
-      return Strings.of(context)!.passwordLeastLength;
+    if (value.length < 6 && value.length > 18) {
+      return "Strings.of(context)!.passwordLeastLength";
     }
     if (!rxUppercase.hasMatch(value)) {
-      return Strings.of(context)!.passwordUppercase;
+      return "Strings.of(context)!.passwordUppercase";
     }
     if (!rxLowercase.hasMatch(value)) {
-      return Strings.of(context)!.passwordLowerCase;
+      return "Strings.of(context)!.passwordLowerCase";
     }
     if (!rxDigit.hasMatch(value)) {
-      return Strings.of(context)!.passwordDigit;
+      return "Strings.of(context)!.passwordDigit";
     }
     if (!rxSpecial.hasMatch(value)) {
-      return Strings.of(context)!.passwordSpecial;
+      return "Strings.of(context)!.passwordSpecial";
     }
     if (!rxValidCharacters.hasMatch(value)) {
       //Todo: change message when has requirement
-      return Strings.of(context)!.passwordInvalidCharacter;
+      return "Strings.of(context)!.passwordInvalidCharacter";
     }
 
     return null;

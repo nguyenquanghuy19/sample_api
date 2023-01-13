@@ -1,5 +1,5 @@
-import 'package:elearning/ui/views/auth/sign_in_view.dart';
-import 'package:elearning/ui/widgets/banners/flavor_banner.dart';
+import 'package:testproject/ui/views/auth/sign_in_view.dart';
+import 'package:testproject/ui/widgets/banners/flavor_banner.dart';
 import 'package:flutter/material.dart';
 
 /// TopScreenNavigator

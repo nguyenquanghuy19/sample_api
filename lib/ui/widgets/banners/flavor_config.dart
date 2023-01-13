@@ -1,4 +1,4 @@
-import 'package:elearning/core/enums/enums.dart';
+import 'package:testproject/core/enums/enums.dart';
 import 'package:flutter/material.dart';
 
 class FlavorConfig {

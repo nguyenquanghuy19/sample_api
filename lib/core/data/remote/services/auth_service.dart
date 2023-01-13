@@ -1,6 +1,6 @@
-import 'package:elearning/core/constants/api_end_point.dart';
-import 'package:elearning/core/data/models/user_model.dart';
-import 'package:elearning/core/data/remote/services/base_service.dart';
+import 'package:testproject/core/constants/api_end_point.dart';
+import 'package:testproject/core/data/models/user_model.dart';
+import 'package:testproject/core/data/remote/services/base_service.dart';
 
 class AuthService extends BaseService {
   Future<UserModel?> signIn(String email, String password) async {

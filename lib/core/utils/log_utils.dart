@@ -1,5 +1,5 @@
-import 'package:elearning/core/enums/enums.dart';
-import 'package:elearning/core/plugin/file/logger_manager.dart';
+import 'package:testproject/core/enums/enums.dart';
+import 'package:testproject/core/plugin/file/logger_manager.dart';
 
 /// <p>ログユーティリティクラス</p>
 class LogUtils {

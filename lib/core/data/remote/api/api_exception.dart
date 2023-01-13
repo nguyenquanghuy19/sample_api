@@ -9,7 +9,7 @@
 // HTTP Error 504 - Request Timeout Error
 
 import 'package:dio/dio.dart';
-import 'package:elearning/core/constants/constants.dart';
+import 'package:testproject/core/constants/constants.dart';
 
 import 'failure.dart';
 
