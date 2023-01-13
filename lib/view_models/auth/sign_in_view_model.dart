@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:testproject/core/data/remote/api/api_exception.dart';
 import 'package:testproject/core/data/repositories/auth_repository.dart';
 import 'package:testproject/core/data/share_preference/spref_user_model.dart';
 import 'package:testproject/core/utils/log_utils.dart';

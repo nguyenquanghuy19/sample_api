@@ -17,16 +17,20 @@ class DataCategoriesResponse {
 }
 
 class CategoryModel {
-  final String _id;
+  final String id;
   final String name;
   bool isSelected;
 
-  CategoryModel({required String id, required this.name, this.isSelected = false}) : _id = id;
+  CategoryModel({required this.id, required this.name, this.isSelected = false});
 
   factory CategoryModel.fromJson(Map<String, dynamic> json) {
     return CategoryModel(
       id: json['_id'] as String,
       name: json['name'] as String,
     );
+  }
+
+  Map<String, Object> toMap(){
+    return {'id':id,'name': name, 'isSelected': isSelected};
   }
 }

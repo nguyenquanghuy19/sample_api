@@ -1,4 +1,3 @@
-import 'package:testproject/core/l10n/strings.dart';
 import 'package:flutter/cupertino.dart';
 
 class CheckValidateUtils {

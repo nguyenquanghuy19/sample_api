@@ -59,6 +59,19 @@ class MainViewState extends BaseViewState<MainView, MainViewModel> {
                 ),
               ),
             ),
+            Positioned(
+              top: 30,
+              right: 0,
+              child: GestureDetector(
+                onTap: () => Navigator.of(context).pop(),
+                child: TextButton(
+                  child: Text("Done", style: AppText.text16.copyWith(color: Colors.white),),
+                  onPressed: () {
+                    viewModel.saveListCategory();
+                  },
+                ),
+              ),
+            ),
             Positioned.fill(
               top: 200.h,
               child: Padding(

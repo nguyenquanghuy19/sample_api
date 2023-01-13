@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:testproject/core/constants/api_end_point.dart';
+import 'package:testproject/core/constants/constants.dart';
 import 'package:testproject/core/data/remote/api/api_exception.dart';
 import 'package:testproject/core/data/remote/api/failure.dart';
 import 'package:testproject/core/data/share_preference/spref_user_model.dart';
@@ -17,7 +17,9 @@ class HandleInterceptors extends QueuedInterceptorsWrapper {
   HandleInterceptors(this.appDio);
 
   Map<String, String> get headers {
-    return <String, String>{};
+    return <String, String>{
+      'Authorization': 'Bearer ${Constants.token}',
+    };
   }
 
   Map<String, String> get authorizedHeaders {
@@ -84,10 +86,11 @@ class HandleInterceptors extends QueuedInterceptorsWrapper {
 
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
-    options.headers = options.path ==
-            appDio.processUri(url: ApiEndPointConstants.signup).toString()
-        ? headers
-        : authorizedHeaders;
+    options.headers = headers;
+    // options.path ==
+    //         appDio.processUri(url: ApiEndPointConstants.signup).toString()
+    //     ? headers
+    //     : authorizedHeaders;
     LogUtils.d("onRequest -> [options.path] => ${options.path}");
     super.onRequest(options, handler);
   }
