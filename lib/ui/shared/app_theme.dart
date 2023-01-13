@@ -92,6 +92,7 @@ class AppColor extends MaterialColor {
   const AppColor(int primary, Map<int, Color> swatch) : super(primary, swatch);
   static const Color backgroundGradientStart = Color(0xFF1D2238);
   static const Color colorsPrimary = Color(0xFF647FFF);
+  static const Color colorsBackgroundItem = Color(0xFF8A32A9);
 
   static const MaterialColor primary = MaterialColor(
     _deepOrangePrimaryValue,

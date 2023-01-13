@@ -1,10 +1,10 @@
+import 'package:flutter/material.dart';
 import 'package:testproject/core/data/remote/api/api_exception.dart';
 import 'package:testproject/core/data/repositories/auth_repository.dart';
 import 'package:testproject/core/data/share_preference/spref_user_model.dart';
-import 'package:testproject/core/l10n/strings.dart';
 import 'package:testproject/core/utils/log_utils.dart';
+import 'package:testproject/ui/views/main/main_view.dart';
 import 'package:testproject/view_models/base_view_model.dart';
-import 'package:flutter/material.dart';
 
 class SignInViewModel extends BaseViewModel {
   final AuthRepository _authRepository = AuthRepository();
@@ -23,7 +23,9 @@ class SignInViewModel extends BaseViewModel {
   @override
   Future<void> onInitViewModel(BuildContext context) async {
     super.onInitViewModel(context);
-    inItData();
+    await SPrefUserModel().onInit();
+    emailController.text = "huy2test@gmail.com";
+    passwordController.text = "123abcD@";
     LogUtils.d("[$runtimeType][LOGIN_VIEW_MODEL] => INIT");
   }
 
@@ -32,81 +34,30 @@ class SignInViewModel extends BaseViewModel {
     updateUI();
   }
 
-  Future<bool> onSignIn() async {
+  Future<void> onSignIn() async {
     try {
       _inProgress = true;
-      updateUI();
-      final res = await _authRepository.signIn(
+      final res = await _authRepository.signUp(
+        "Huy",
+        "Nguyen",
         emailController.text,
         passwordController.text,
       );
-      _inProgress = false;
-      updateUI();
-      SPrefUserModel().setRemember(_isCheckRememberMe);
       if (res != null) {
-        SPrefUserModel().setAccessToken(res.accessToken);
-        SPrefUserModel().setRefreshToken(res.refreshToken);
-        SPrefUserModel().setExpiration(res.expiration);
-        SPrefUserModel().setExpires(res.expires);
-        if (SPrefUserModel().getRemember() ?? false) {
-          SPrefUserModel().setEmail(emailController.text);
-          SPrefUserModel().setPassword(passwordController.text);
-        }
-        SPrefUserModel().setIsSignIn(true);
-        removeNotifier();
-        _transitionToLadingView();
-
-        return true;
+        await SPrefUserModel().setAccessToken(res.token);
+        Navigator.push(
+          context,
+          MaterialPageRoute<void>(builder: (context) {
+            return const MainView();
+          }),
+        );
       }
-
-      return false;
-    } on ApiException {
       _inProgress = false;
       updateUI();
-      hideCurrentSnackBar();
-
-      return false;
-    } on Exception {
+    } on Exception catch (error) {
       _inProgress = false;
+      LogUtils.d("[SignIn_MODEL] => error: $error");
       updateUI();
-      hideCurrentSnackBar();
-
-      return false;
     }
-  }
-
-  void inItData() {
-    // final bool? remember = SPrefUserModel().getRemember();
-    // final String? expiration = SPrefUserModel().getExpiration();
-    // if (expiration == null) {
-    //   return;
-    // }
-    // DateTime expirationDateTime = DateTime.parse(expiration);
-    // if (expirationDateTime.isAfter(DateTime.now()) &&
-    //     remember != null &&
-    //     remember) {
-    //   final String? email = SPrefUserModel().getEmail();
-    //   final String? password = SPrefUserModel().getPassword();
-    //   _isCheckRememberMe = remember;
-    //   emailController.text = email ?? "";
-    //   passwordController.text = password ?? "";
-    //   notifyListeners();
-    // }
-  }
-
-  void _transitionToLadingView() {
-    Navigator.of(context).pop();
-  }
-
-  String? validatePassword(String? value, BuildContext context) {
-    if (value == null || value.isEmpty) {
-      return "Strings.of(context)!.passwordRequired";
-    }
-
-    return null;
-  }
-
-  void hideCurrentSnackBar() {
-    ScaffoldMessenger.of(context).removeCurrentSnackBar();
   }
 }
