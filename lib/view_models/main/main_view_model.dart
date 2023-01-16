@@ -15,10 +15,12 @@ class MainViewModel extends BaseViewModel {
   Future<void> onInitViewModel(BuildContext context) async {
     super.onInitViewModel(context);
     await initDatabase();
-    getListCategory();
+    await getListCategory();
+    // await getListCategoryFromDB();
     LogUtils.d("[$runtimeType][MainView_MODEL] => INIT");
   }
 
+  /// Get list category from Api
   Future<void> getListCategory() async {
     try {
       final res = await _mainRepository.getListCategory();
@@ -29,6 +31,14 @@ class MainViewModel extends BaseViewModel {
       LogUtils.d("[MainView_MODEL] => error: $error");
     }
     updateUI();
+  }
+
+  /// Get list category from DB
+  Future<void> getListCategoryFromDB() async {
+    final res = await _mainRepository.getListCategoryFromDB();
+    if (res != null) {
+      categories = res;
+    }
   }
 
   Future<void> initDatabase() async {
@@ -47,8 +57,7 @@ class MainViewModel extends BaseViewModel {
     );
   }
 
-  void saveListCategory() {
-    // await _mainRepository.saveItemCategory(categories[1]);
-    _mainRepository.saveItemCategoryObject(categories);
+  void onTapSaveListCategory() {
+    _mainRepository.saveItemCategoryToDB(categories);
   }
 }

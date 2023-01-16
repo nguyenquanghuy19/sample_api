@@ -37,9 +37,9 @@ class CategoryTable {
 
   static String create() {
     return "CREATE TABLE $tableName ("
-        "$columnId INTEGER NOT NULL UNIQUE,"
+        "$columnId TEXT, "
         "$columnName TEXT, "
-        "$columnSelected INTEGER NOT NULL DEFAULT 0, "
+        "$columnSelected INTEGER NOT NULL DEFAULT 0"
         ")";
   }
 }

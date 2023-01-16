@@ -16,5 +16,6 @@ class Constants {
   /// 15000msec
   static const int timeReceiveTimeout = 15000;
 
-  static const String token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2MwZGQ0ZjZjYTliMjc1YmQ5YTI2NDMiLCJpYXQiOjE2NzM1ODM5NTEsImV4cCI6MTY3MzY3MDM1MX0.mzI0PCwnOXHKsfYuKWSdP21pxj4nh20LK_tAXwjCq6w';
+  /// Token to test transition to MainView
+  static const String token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2M0YWY5MDZjYTliMjc1YmQ5YTI2YTEiLCJpYXQiOjE2NzM4MzQzODQsImV4cCI6MTY3MzkyMDc4NH0.U9taAUXzQUGb0mrPkdJP1Bfm1cGZYLEpgopVEYvFcAM';
 }

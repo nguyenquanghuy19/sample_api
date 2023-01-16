@@ -67,7 +67,7 @@ class MainViewState extends BaseViewState<MainView, MainViewModel> {
                 child: TextButton(
                   child: Text("Done", style: AppText.text16.copyWith(color: Colors.white),),
                   onPressed: () {
-                    viewModel.saveListCategory();
+                    viewModel.onTapSaveListCategory();
                   },
                 ),
               ),

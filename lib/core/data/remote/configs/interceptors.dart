@@ -1,9 +1,8 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:testproject/core/constants/constants.dart';
+import 'package:testproject/core/constants/api_end_point.dart';
 import 'package:testproject/core/data/remote/api/api_exception.dart';
 import 'package:testproject/core/data/remote/api/failure.dart';
 import 'package:testproject/core/data/share_preference/spref_user_model.dart';
@@ -17,15 +16,15 @@ class HandleInterceptors extends QueuedInterceptorsWrapper {
   HandleInterceptors(this.appDio);
 
   Map<String, String> get headers {
-    return <String, String>{
-      'Authorization': 'Bearer ${Constants.token}',
-    };
+    return <String, String>{};
   }
 
   Map<String, String> get authorizedHeaders {
     String? accessToken = SPrefUserModel().getAccessToken() ?? "";
 
-    return headers..putIfAbsent('Authorization', () => "Bearer $accessToken");
+    return <String, String>{
+      'Authorization': 'Bearer $accessToken',
+    };
   }
 
   @override
@@ -34,20 +33,6 @@ class HandleInterceptors extends QueuedInterceptorsWrapper {
     final statusCode = err.response?.statusCode;
     final bodyFailure = err.response?.data?.toString() ?? "";
     LogUtils.d("【API:ERROR/$statusCode】【$path】【$bodyFailure】 $err");
-    if (_isNetworkError(err)) {
-      LogUtils.d("【interceptor:error】【$path】 network error ...");
-      handler.reject(NoInternetException(err.requestOptions, null));
-
-      return;
-    }
-    if (_isTimeoutException(err)) {
-      LogUtils.d("【interceptor:error】【$path】 timeout error ...");
-      // Retry api
-      handler.reject(AppTimeOutException(
-        err.requestOptions,
-        Failure(errorCode: 500, message: "Error internet"),
-      ));
-    }
     Failure? failure;
     try {
       dynamic responseJson = jsonDecode(bodyFailure == "" ? "{}" : bodyFailure);
@@ -86,23 +71,11 @@ class HandleInterceptors extends QueuedInterceptorsWrapper {
 
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
-    options.headers = headers;
-    // options.path ==
-    //         appDio.processUri(url: ApiEndPointConstants.signup).toString()
-    //     ? headers
-    //     : authorizedHeaders;
+    options.headers = options.path ==
+            appDio.processUri(url: ApiEndPointConstants.signup).toString()
+        ? headers
+        : authorizedHeaders;
     LogUtils.d("onRequest -> [options.path] => ${options.path}");
     super.onRequest(options, handler);
-  }
-
-  bool _isNetworkError(DioError err) {
-    return err.error != null &&
-        (err.error is SocketException || err.error is HttpException);
-  }
-
-  bool _isTimeoutException(DioError err) {
-    return err.type == DioErrorType.sendTimeout ||
-        err.type == DioErrorType.connectTimeout ||
-        err.type == DioErrorType.receiveTimeout;
   }
 }

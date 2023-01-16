@@ -15,20 +15,21 @@ class CategoryDao extends BaseDao<CategoryTable> {
     db = AppDatabase().database!;
   }
 
-  Future<int> insert(
-  {required String id,
+  Future<int> insert({
+    required String id,
     required String name,
-      int selected = 0,}
-  ) async {
-    final bikeImagesTable = CategoryTable.fromParam(id: id, name: name, selected: selected);
-    LogUtils.d("【$runtimeType】insert [params:$bikeImagesTable]");
+    int selected = 0,
+  }) async {
+    final categoriesTable =
+        CategoryTable.fromParam(id: id, name: name, selected: selected);
+    LogUtils.d("【$runtimeType】insert [params:$categoriesTable]");
     final item =
-        await db.insert(CategoryTable.tableName, bikeImagesTable.toJson());
+        await db.insert(CategoryTable.tableName, categoriesTable.toJson());
 
     return item;
   }
 
-  Future<CategoryTable?> getCategories() async {
+  Future<List<CategoryTable>?> getCategories() async {
     List<CategoryTable> list = [];
     List<Map> maps = await db.query(CategoryTable.tableName, columns: [
       CategoryTable.columnId,
@@ -36,18 +37,18 @@ class CategoryDao extends BaseDao<CategoryTable> {
       CategoryTable.columnSelected,
     ]);
 
-    LogUtils.d("【$runtimeType】getBikeImages [value: $maps]");
+    LogUtils.d("【$runtimeType】getCategories [value: $maps]");
     if (maps.isNotEmpty) {
       list = CategoryTable.fromJsonList(maps);
 
-      return list.first;
+      return list;
     }
 
     return null;
   }
 
   Future<int> delete(String id) async {
-    LogUtils.d("【$runtimeType】delete [userId: $id]");
+    LogUtils.d("【$runtimeType】delete [Id: $id]");
 
     return await db.delete(
       CategoryTable.tableName,

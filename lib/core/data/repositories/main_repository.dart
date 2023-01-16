@@ -14,13 +14,30 @@ class MainRepository {
     }
   }
 
-  Future<void> saveItemCategory({required String id, required String name, bool isSelected = false}) async {
-    await _categoryDao.insert(id: id, name: name, selected: isSelected ? 1 :0);
+  void saveItemCategoryToDB(List<CategoryModel> categories) {
+    for (int i = 0; i < categories.length; i++) {
+      _categoryDao.insert(
+        id: categories[i].id,
+        name: categories[i].name,
+        selected: categories[i].isSelected ? 1 : 0,
+      );
+    }
   }
 
-  void saveItemCategoryObject(List<CategoryModel> categories)  {
-    for(int i = 0 ; i < categories.length; i++){
-      _categoryDao.insert(id: categories[i].id, name: categories[i].name, selected: categories[i].isSelected ? 1 : 0);
-    }
+  Future<List<CategoryModel>?> getListCategoryFromDB() async {
+    List<CategoryModel>? categoryLocal = [];
+    final listCategoryDB = await _categoryDao.getCategories();
+    if (listCategoryDB == null) return null;
+    categoryLocal = listCategoryDB
+        .map(
+          (obj) => CategoryModel(
+            id: obj.id!,
+            name: obj.name!,
+            isSelected: obj.selected == 1 ? true : false,
+          ),
+        )
+        .toList();
+
+    return categoryLocal;
   }
 }

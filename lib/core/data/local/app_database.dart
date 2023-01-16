@@ -4,7 +4,7 @@ import 'package:testproject/core/data/local/tables/category_table.dart';
 import 'package:testproject/core/utils/log_utils.dart';
 
 class AppDatabase {
-  static const String databaseName = "bassist.db";
+  static const String databaseName = "test_project.db";
   static const int databaseVersion = 1;
   Database? _database;
 
