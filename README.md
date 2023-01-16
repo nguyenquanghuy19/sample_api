@@ -1,6 +1,6 @@
 # test project
 
-A new Flutter project.
+A new Flutter project. The project is made from MVVM pattern.
 
 ## Getting Started
 
