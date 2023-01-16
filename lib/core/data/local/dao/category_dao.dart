@@ -20,6 +20,7 @@ class CategoryDao extends BaseDao<CategoryTable> {
     required String name,
     int selected = 0,
   }) async {
+    await db.delete(CategoryTable.tableName);
     final categoriesTable =
         CategoryTable.fromParam(id: id, name: name, selected: selected);
     LogUtils.d("【$runtimeType】insert [params:$categoriesTable]");
